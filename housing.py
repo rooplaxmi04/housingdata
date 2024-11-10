@@ -38,21 +38,24 @@ st.markdown('</div>', unsafe_allow_html=True)
 # Scatter Plot 1
 st.markdown('<div class="section">', unsafe_allow_html=True)
 st.write("### Scatter plot of 'Gr Liv Area' vs 'SalePrice'")
-fig1 = sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice')
+fig1, ax1 = plt.subplots()
+sns.scatterplot(data=housing, x='Gr Liv Area', y='SalePrice', ax=ax1)
 st.pyplot(fig1)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Scatter Plot 2 with customized style
 st.markdown('<div class="section">', unsafe_allow_html=True)
 st.write("### Scatter plot with 'Overall Qual' as hue and 'Garage Area' as size")
-fig2 = sns.relplot(
+fig2, ax2 = plt.subplots()
+sns.scatterplot(
     data=housing, 
     x='Gr Liv Area', 
     y='SalePrice', 
     hue='Overall Qual', 
     palette='RdYlGn', 
     size='Garage Area', 
-    sizes=(1, 300)
+    sizes=(20, 200),
+    ax=ax2
 )
 st.pyplot(fig2)
 st.markdown('</div>', unsafe_allow_html=True)
@@ -67,7 +70,7 @@ fig3 = sns.relplot(
     hue='Overall Qual', 
     palette='RdYlGn', 
     size='Garage Area', 
-    sizes=(1, 500), 
+    sizes=(20, 300), 
     style='Rooms', 
     col='Year'
 )
